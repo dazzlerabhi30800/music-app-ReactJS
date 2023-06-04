@@ -16,15 +16,14 @@ body {
   background: rgb(24, 0, 48);
   text-align: center;
   padding: 1rem 0;
-  background: radial-gradient(
-    circle,
-    rgba(24, 0, 48, 1) 12%,
-    rgba(2, 1, 25, 1) 100%
-  );
+  background: radial-gradient(circle,
+      rgba(24, 0, 48, 1) 12%,
+      rgba(2, 1, 25, 1) 100%);
 }
 
 h1 {
   font-size: 2.5rem;
+  text-transform: uppercase;
 }
 
 a {
@@ -46,6 +45,7 @@ button {
   cursor: pointer;
   font-weight: 700;
 }
+
 button:hover {
   background: #ccc;
 }
