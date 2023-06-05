@@ -8,8 +8,9 @@ const SpotifyPlaying = ({ client_id, client_secret, refresh_token }) => {
     Promise.all([
       getNowPlayingItem(client_id, client_secret, refresh_token),
     ]).then((results) => {
-      setResult(results[0]);
-      setLoading(false);
+      console.log(results);
+      // setResult(results[0]);
+      // setLoading(false);
     });
   });
   //   console.log(result);

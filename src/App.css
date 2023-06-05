@@ -32,7 +32,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button:not([type="submit"]) {
   padding: 10px 1.5rem;
   margin: 10px 0;
   border-radius: 5px;
@@ -40,12 +40,71 @@ button {
   background: #fff;
   border: none;
   outline: none;
+  color: #000;
   font-size: 1.2rem;
   text-transform: uppercase;
   cursor: pointer;
   font-weight: 700;
 }
 
-button:hover {
+button:not([type="submit"]):hover {
   background: #ccc;
+}
+
+
+form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 10px auto;
+  width: fit-content;
+}
+
+form input {
+  color: #000;
+  padding: 5px 1rem;
+  border-radius: 5px;
+}
+
+form button[type="submit"] {
+  border: none;
+  outline: none;
+  background: yellow;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+}
+
+form button[type="submit"]:hover {
+  background: #7ff5a6;
+}
+
+.artists--container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  align-items: center;
+}
+
+.artists--wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  border-radius: 5px;
+  margin: 1rem auto;
+  background: rgba(87, 87, 87, 0.3);
+}
+
+.artists--wrapper>img {
+  border-radius: 5px 5px 0 0;
+}
+
+
+.artists--wrapper>h2 {
+  padding: 0px 10px;
+  font-weight: 700;
 }

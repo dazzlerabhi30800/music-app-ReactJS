@@ -2,7 +2,8 @@ import queryString from "query-string";
 
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+// const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
+const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me`;
 
 const client_id = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
 const client_secret = import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET;
@@ -53,17 +54,18 @@ export default async function getNowPlayingItem(
 
   const song = await response.json();
 
-  const albumImageUrl = song.item?.album.images[0].url;
-  const artist = song.item?.artists.map((_artist) => _artist.name).join(",");
-  const isPlaying = song.is_playing;
-  const songUrl = song.item.external_urls.spotify;
-  const title = song.item.name;
+  // const albumImageUrl = song.item?.album.images[0].url;
+  // const artist = song.item?.artists.map((_artist) => _artist.name).join(",");
+  // const isPlaying = song.is_playing;
+  // const songUrl = song.item.external_urls.spotify;
+  // const title = song.item.name;
 
-  return {
-    albumImageUrl,
-    artist,
-    isPlaying,
-    songUrl,
-    title,
-  };
+  // return {
+  //   albumImageUrl,
+  //   artist,
+  //   isPlaying,
+  //   songUrl,
+  //   title,
+  // };
+  return song;
 }
