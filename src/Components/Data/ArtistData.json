@@ -1,0 +1,124 @@
+{
+  "artists": [
+    {
+      "name": "AC/DC",
+      "artistIid": "711MCceyCBcFnzjGY4Q7Un",
+      "songId": "6mUdeDZCsExyJLMdAfDuwh",
+      "spotify": "https://open.spotify.com/artist/711MCceyCBcFnzjGY4Q7Un",
+      "songName": "Back In Black",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab67616d0000b2730b51f8d91f3a21e8426361ae",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/ab67616d00001e020b51f8d91f3a21e8426361ae",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/ab67616d000048510b51f8d91f3a21e8426361ae",
+          "width": 64
+        }
+      ]
+    },
+    {
+      "name": "Selena Gomez",
+      "artistId": "0C8ZW7ezQVs4URX5aX7Kqx",
+      "songId": "514rhnksEwHUh6LxXsQ4Y9",
+      "spotify": "https://open.spotify.com/artist/0C8ZW7ezQVs4URX5aX7Kqx",
+      "songName": "Back To You",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab67616d0000b273acc995be2b5bdc62d622ccd3",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/ab67616d00001e02acc995be2b5bdc62d622ccd3",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/ab67616d00004851acc995be2b5bdc62d622ccd3",
+          "width": 64
+        }
+      ]
+    },
+    {
+      "name": "The weeknd",
+      "songName": "Is There Someone Else?",
+      "artistId": "1Xyo4u8uXC1ZmMpatF05PJ",
+      "songId": "37zcCimcUGurQoLEAuN8nR",
+      "spotify": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab67616d0000b273ade87e5f9c3764f0a1e5df64",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/ab67616d00001e02ade87e5f9c3764f0a1e5df64",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/ab67616d00004851ade87e5f9c3764f0a1e5df64",
+          "width": 64
+        }
+      ]
+    },
+    {
+      "name": "Taylor Swift",
+      "songName": "Blank Space",
+      "artistId": "06HL4z0CvFAxyc27GXpf02",
+      "songId": "2ls70nUDfjzm1lSRDuKxmw",
+      "spotify": "https://api.spotify.com/v1/artists/06HL4z0CvFAxyc27GXpf02",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab67616d0000b273b7e976d2b35c767f9012cb72",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/ab67616d00001e02b7e976d2b35c767f9012cb72",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/ab67616d00004851b7e976d2b35c767f9012cb72",
+          "width": 64
+        }
+      ]
+    },
+    {
+      "name": "Flo Rida",
+      "songName": "Whistle",
+      "artistId": "0jnsk9HBra6NMjO2oANoPY",
+      "songId": "3bC1ahPIYt1btJzSSEyyrF",
+      "spotify": "https://api.spotify.com/v1/artists/0jnsk9HBra6NMjO2oANoPY",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://i.scdn.co/image/ab67616d0000b273871d85943145dde548f4ae09",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://i.scdn.co/image/ab67616d00001e02871d85943145dde548f4ae09",
+          "width": 300
+        },
+        {
+          "height": 64,
+          "url": "https://i.scdn.co/image/ab67616d00004851871d85943145dde548f4ae09",
+          "width": 64
+        }
+      ]
+    }
+  ]
+}
