@@ -5,6 +5,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import searchArtists from "./FetchArtists";
 import SpotifyPlaying from "./SpotifyPlaying";
 import Navbar from "./Components/Pages/Home/Navbar";
+console.log("hello");
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
