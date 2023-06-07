@@ -4,6 +4,7 @@ const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 // const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me`;
+const RECENT_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
 
 const client_id = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
 const client_secret = import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET;
@@ -28,44 +29,58 @@ const getAccessToken = async () => {
 export const getNowPlaying = async (
   client_id,
   client_secret,
-  refresh_token
+  refresh_token,
+  endPoint
 ) => {
   const { access_token } = await getAccessToken(
     client_id,
     client_secret,
     refresh_token
   );
-  return fetch(NOW_PLAYING_ENDPOINT, {
+  return fetch(endPoint, {
+    method: "GET",
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
   });
 };
 
-export default async function getNowPlayingItem(
+export default async function getRecentData(
   client_id,
   client_secret,
-  refresh_token
+  refresh_token,
+  endPoint
 ) {
-  const response = await getNowPlaying(client_id, client_secret, refresh_token);
+  const response = await getNowPlaying(
+    client_id,
+    client_secret,
+    refresh_token,
+    endPoint
+  );
   if (response.status === 204 || response.status > 400) {
     return false;
   }
+  console.log(response);
 
-  const song = await response.json();
-
-  // const albumImageUrl = song.item?.album.images[0].url;
-  // const artist = song.item?.artists.map((_artist) => _artist.name).join(",");
-  // const isPlaying = song.is_playing;
-  // const songUrl = song.item.external_urls.spotify;
-  // const title = song.item.name;
-
-  // return {
-  //   albumImageUrl,
-  //   artist,
-  //   isPlaying,
-  //   songUrl,
-  //   title,
-  // };
-  return song;
+  const data = await response.json();
+  return data;
 }
+
+// export default async function getNowRecentTracks(
+//   client_id,
+//   client_secret,
+//   refresh_token
+// ) {
+//   const response = await getNowPlaying(
+//     client_id,
+//     client_secret,
+//     refresh_token,
+//     RECENT_ENDPOINT
+//   );
+//   if (response.status === 204 || response.status > 400) {
+//     return false;
+//   }
+
+//   const data = await response.json();
+//   return data;
+// }
