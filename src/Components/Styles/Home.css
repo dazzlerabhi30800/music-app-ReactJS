@@ -1,0 +1,270 @@
+.home--wrapper {
+    position: relative;
+    /* z-index: 4444; */
+}
+
+.home--container {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, rgb(12, 18, 24) 0%, rgba(0, 0, 0, 1) 100%);
+    border-radius: 3px;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: 100vh;
+}
+
+
+.recent--wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.recent--container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+.recent--comp {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 3px;
+    background: linear-gradient(to left, #f67777, #7474fa);
+    width: 100%;
+    font-weight: 500;
+    transition: 0.3s linear;
+}
+
+
+
+.recent--comp>img {
+    width: 75px;
+    border-radius: 3px 0 0 3px;
+    height: 75px;
+}
+
+.recent--comp>p {
+    font-size: .9rem;
+}
+
+
+
+/* Music Container */
+div h3 {
+    margin: 10px 0 20px;
+    font-weight: 600;
+}
+
+.music--container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    padding: 1rem 1rem 7rem;
+}
+
+.music--comp {
+    display: grid;
+    grid-template-areas: "one one"
+        "two three"
+        "four three"
+    ;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(113, 113, 113, 0.3);
+}
+
+.music--comp>img {
+    grid-area: one;
+    height: 320px;
+    object-fit: fill;
+    width: 100%;
+}
+
+.music--comp>p {
+    grid-area: two;
+    font-weight: 500;
+}
+
+.music--comp>span {
+    grid-area: three;
+    place-self: center end;
+    font-size: 1.8rem;
+    color: #6cfa6c;
+}
+
+.music--comp>a {
+    grid-area: four;
+    color: #ccc;
+    text-decoration: underline;
+}
+
+
+.favoriteIcon {
+    transition: 0.3s linear;
+    position: relative;
+    transform: scale(1);
+}
+
+.favoriteIcon::after {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 0px 0px 1px #6cfa6c;
+    transform: scale(0);
+    transform-origin: center;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: 0.8s linear;
+}
+
+.favoriteIcon::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 0px 0px 1px #6cfa6c;
+    transform: scale(0);
+    transform-origin: center;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transition: 0.8s linear;
+}
+
+/* .favoriteIcon:hover::after {
+    transform: scale(1.5);
+} */
+
+
+/* .favoriteIcon:hover {
+    transition: 0.3s linear;
+} */
+
+.favoriteIcon.glow {
+    animation: grow 500ms forwards;
+}
+
+
+.favoriteIcon.glow::after {
+    animation: border1 1.5s forwards;
+    animation-delay: 50ms;
+}
+
+.favoriteIcon.glow::before {
+    animation: border2 1.5s forwards;
+}
+
+@keyframes grow {
+    0% {
+        transform: (1);
+    }
+
+    50% {
+        transform: scale(2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes border1 {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+
+        transform: scale(1.5);
+    }
+
+
+    75% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes border2 {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+
+        transform: scale(2.5);
+    }
+
+    75% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+
+
+@media (hover:hover) {
+    .recent--comp:hover {
+        font-weight: 700;
+        background: linear-gradient(to left, #f85656, #4e4efa);
+    }
+
+    .music--comp>span {
+        cursor: pointer;
+    }
+
+    .music--comp>a:hover {
+        color: #fff;
+    }
+}
+
+
+@media (width > 900px) {
+    .recent--container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .music--container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (width > 1200px) {
+    .recent--container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (width > 1300px) {
+    .music--container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (width > 1650px) {
+    .music--container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* @media (width > 500px) {
+    .recent--wrapper {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} */

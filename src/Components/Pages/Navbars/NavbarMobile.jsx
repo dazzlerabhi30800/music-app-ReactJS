@@ -3,7 +3,7 @@ import { AiOutlineHome, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
 import { SlSocialSpotify } from "react-icons/sl";
 
 const NavbarMobile = () => {
-  const links = document.querySelectorAll("a");
+  const links = document.querySelectorAll(".navLink");
   links.forEach((link, index) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -13,16 +13,16 @@ const NavbarMobile = () => {
   });
   return (
     <nav className="navbar--mobile">
-      <a href="#" className="active">
+      <a href="#" className="navLink active">
         <AiOutlineHome />
       </a>
-      <a href="#">
+      <a href="#" className="navLink">
         <AiOutlineSearch />
       </a>
-      <a href="#">
+      <a href="#" className="navLink">
         <AiOutlineHeart />
       </a>
-      <a href="#">
+      <a href="#" className="navLink">
         <SlSocialSpotify />
       </a>
     </nav>

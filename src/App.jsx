@@ -6,6 +6,7 @@ import NavbarPC from "./Components/Pages/Navbars/NavbarPC";
 import useResize from "./useResize";
 import NavbarMobile from "./Components/Pages/Navbars/NavbarMobile";
 import Home from "./Components/Pages/Home/Home";
+import AudioPlayer from "./Components/Pages/Home/AudioPlayer";
 
 export const tokenContext = createContext();
 function App() {
@@ -93,8 +94,9 @@ function App() {
             <NavbarMobile />
           )}
           <Home />
-          <a href={AUTH_URL}>Click for Token Access</a>
         </main>
+        <AudioPlayer />
+        {/* <a href={AUTH_URL}>Token</a> */}
       </>
     </tokenContext.Provider>
   );

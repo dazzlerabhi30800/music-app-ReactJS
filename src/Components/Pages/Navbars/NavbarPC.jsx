@@ -21,10 +21,9 @@ const NavbarPC = ({
   searchKey,
 }) => {
   const [artist, setArtist] = useState(artistData.data);
-  console.log(artist);
   return (
     <nav className="navbar--pc">
-      <header>
+      <div className="header--pc">
         <a onClick={(e) => e.preventDefault()} href="#">
           <AiOutlineHome />
           <span>Home</span>
@@ -33,7 +32,7 @@ const NavbarPC = ({
           <AiOutlineSearch />
           <span>Search</span>
         </a>
-      </header>
+      </div>
       <div className="library--wrapper">
         <div className="libraryIcon">
           <p>
@@ -65,7 +64,7 @@ const NavbarPC = ({
             </div>
           </div>
           <div className="playlist playlistSongs">
-            <div className="playlistIcon playlistIcon">
+            <div className="playlistIcon tuneIcon">
               <FaItunesNote />
             </div>
             <div className="playlist--info">
@@ -76,7 +75,7 @@ const NavbarPC = ({
             </div>
           </div>
           <div className="playlist playlistSongs">
-            <div className="playlistIcon playlistIcon">
+            <div className="playlistIcon tuneIcon">
               <FaItunesNote />
             </div>
             <div className="playlist--info">
