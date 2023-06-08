@@ -2,7 +2,14 @@ import React, { useState, useContext } from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlinePause } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 
-const MusicContainer = ({ setTrack, setMusicData, musicData }) => {
+const MusicContainer = ({
+  setTrack,
+  setMusicData,
+  musicData,
+  setIsPlaying,
+  isPlaying,
+  audioRef,
+}) => {
   const handleFavorite = (id) => {
     setMusicData(
       musicData.map((data) => {
@@ -18,8 +25,18 @@ const MusicContainer = ({ setTrack, setMusicData, musicData }) => {
     setMusicData(
       musicData.map((item) => {
         if (item.songId === id) {
+          audioRef.current.currentTime = 0;
+          audioRef.current.src = item.audioSrc;
           setTrack(item);
-          return { ...item, playing: !item.playing };
+          if (!item.playing) {
+            audioRef.current.play();
+            setIsPlaying(true);
+            return { ...item, playing: true };
+          } else {
+            audioRef.current.pause();
+            setIsPlaying(false);
+            return { ...item, playing: false };
+          }
         } else {
           return { ...item, playing: false };
         }

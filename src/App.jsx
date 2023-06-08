@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 import NavbarPC from "./Components/Pages/Navbars/NavbarPC";
@@ -20,7 +20,10 @@ function App() {
   const [track, setTrack] = useState(
     JSON.parse(localStorage.getItem("track")) || ""
   );
+  const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
+
+  let audioRef = useRef(track && new Audio(track.audioSrc));
 
   const [searchKey, setSearchKey] = useState("");
   const [offset, setOffset] = useState(2);
@@ -50,6 +53,12 @@ function App() {
   useEffect(() => {
     const tokenData = window.localStorage.getItem("token");
     // setToken(token);
+  }, []);
+
+  useEffect(() => {
+    if (track) {
+      setTrack({ ...track, playing: false });
+    }
   }, []);
 
   useEffect(() => {
@@ -97,9 +106,21 @@ function App() {
         ) : (
           <NavbarMobile />
         )}
-        <Home track={track} setTrack={setTrack} />
+        <Home
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          track={track}
+          setTrack={setTrack}
+          audioRef={audioRef}
+        />
       </main>
-      <AudioPlayer track={track} setTrack={setTrack} />
+      <AudioPlayer
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        track={track}
+        setTrack={setTrack}
+        audioRef={audioRef}
+      />
       {/* <a href={AUTH_URL}>Token</a> */}
     </>
   );
