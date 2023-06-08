@@ -44,7 +44,7 @@ h1 {
 }
 
 
-button:not([type="submit"]) {
+/* button:not([type="submit"]) {
   padding: 6px 1.5rem;
   margin: 10px 0;
   border-radius: 5px;
@@ -61,7 +61,7 @@ button:not([type="submit"]) {
 
 button:not([type="submit"]):hover {
   background: #ccc;
-}
+} */
 
 
 form {
@@ -99,7 +99,7 @@ form button[type="submit"]:hover {
 }
 
 
-.audio--player {
+/* .audio--player {
   background: rgb(22, 4, 18);
   color: #fbfafa;
   position: fixed;
@@ -108,7 +108,7 @@ form button[type="submit"]:hover {
   width: 100%;
   left: 0;
   z-index: 444;
-}
+} */
 
 
 

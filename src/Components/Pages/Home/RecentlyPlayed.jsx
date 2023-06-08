@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from "react";
-import { tokenContext } from "../../../App";
+// import { tokenContext } from "../../../App";
 import data from "../../Data/ArtistData.json";
 
 const RecentlyPlayed = () => {
   let recent = data.recentData;
-  const token = useContext(tokenContext);
+  // const token = useContext(tokenContext);
   return (
     <div className="recent--wrapper">
       <h3>Recently Played</h3>

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import data from "../../Data/ArtistData.json";
-import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import React, { useState, useContext } from "react";
+import { AiOutlineHeart, AiFillHeart, AiOutlinePause } from "react-icons/ai";
+import { BsFillPlayFill } from "react-icons/bs";
 
-const MusicContainer = () => {
-  const [musicData, setMusicData] = useState(data.audiPlayerData);
+const MusicContainer = ({ setTrack, setMusicData, musicData }) => {
   const handleFavorite = (id) => {
     setMusicData(
       musicData.map((data) => {
@@ -11,6 +10,19 @@ const MusicContainer = () => {
           return { ...data, favorite: !data.favorite };
         }
         return data;
+      })
+    );
+  };
+
+  const handlePlayback = (id) => {
+    setMusicData(
+      musicData.map((item) => {
+        if (item.songId === id) {
+          setTrack(item);
+          return { ...item, playing: !item.playing };
+        } else {
+          return { ...item, playing: false };
+        }
       })
     );
   };
@@ -29,6 +41,12 @@ const MusicContainer = () => {
               >
                 {audio.favorite ? <AiFillHeart /> : <AiOutlineHeart />}
               </span>
+              <button
+                className="play--btn"
+                onClick={() => handlePlayback(audio.songId)}
+              >
+                {audio.playing ? <AiOutlinePause /> : <BsFillPlayFill />}
+              </button>
               <a target="_blank" href={audio.spotify}>
                 {audio.artistName}
               </a>

@@ -1,14 +1,12 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
-import InfiniteScroll from "react-infinite-scroll-component";
 import NavbarPC from "./Components/Pages/Navbars/NavbarPC";
 import useResize from "./useResize";
 import NavbarMobile from "./Components/Pages/Navbars/NavbarMobile";
 import Home from "./Components/Pages/Home/Home";
 import AudioPlayer from "./Components/Pages/Home/AudioPlayer";
 
-export const tokenContext = createContext();
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
   const REDIRECT_URI = "http://localhost:5173/";
@@ -19,6 +17,9 @@ function App() {
   const windowWidth = useResize();
 
   const [token, setToken] = useState("");
+  const [track, setTrack] = useState(
+    JSON.parse(localStorage.getItem("track")) || ""
+  );
   const [artists, setArtists] = useState([]);
 
   const [searchKey, setSearchKey] = useState("");
@@ -51,6 +52,10 @@ function App() {
     // setToken(token);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("track", JSON.stringify(track));
+  }, [track]);
+
   const fetchArtists = async () => {
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
@@ -77,28 +82,26 @@ function App() {
   };
 
   return (
-    <tokenContext.Provider value={token}>
-      <>
-        <main className="main--container">
-          {windowWidth > 600 ? (
-            <NavbarPC
-              token={token}
-              logout={logout}
-              AUTH_URL={AUTH_URL}
-              setTotalResults={setTotalResults}
-              setArtists={setArtists}
-              searchKey={searchKey}
-              setSearchKey={setSearchKey}
-            />
-          ) : (
-            <NavbarMobile />
-          )}
-          <Home />
-        </main>
-        <AudioPlayer />
-        {/* <a href={AUTH_URL}>Token</a> */}
-      </>
-    </tokenContext.Provider>
+    <>
+      <main className="main--container">
+        {windowWidth > 600 ? (
+          <NavbarPC
+            token={token}
+            logout={logout}
+            AUTH_URL={AUTH_URL}
+            setTotalResults={setTotalResults}
+            setArtists={setArtists}
+            searchKey={searchKey}
+            setSearchKey={setSearchKey}
+          />
+        ) : (
+          <NavbarMobile />
+        )}
+        <Home track={track} setTrack={setTrack} />
+      </main>
+      <AudioPlayer track={track} setTrack={setTrack} />
+      {/* <a href={AUTH_URL}>Token</a> */}
+    </>
   );
 }
 
