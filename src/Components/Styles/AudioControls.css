@@ -16,11 +16,11 @@
 .audio--info {
     display: flex;
     gap: 8px;
-    /* background: blue; */
     padding: 5px;
     min-width: 20%;
     align-items: center;
 }
+
 
 .audio--info>img {
     width: 50px;
@@ -75,6 +75,16 @@ button.play--btn {
     color: #000000;
 }
 
+.media--player {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 80%;
+}
+
+.media--player>p {
+    font-size: .9rem;
+}
 
 #audio--progress {
     -webkit-appearance: none;
@@ -98,15 +108,20 @@ button.play--btn {
 }
 
 #audio--progress::-webkit-slider-thumb {
-    --thumb-height: 20px;
+    --thumb-height: 15px;
     -webkit-appearance: none;
     appearance: none;
     cursor: ew-resize;
     background: #39f75c;
     height: var(--thumb-height);
-    width: 20px;
+    width: var(--thumb-height);
     transition: 0.3s linear;
+    opacity: 0;
     border-radius: 50%;
+}
+
+#audio--progress:hover::-webkit-slider-thumb {
+    opacity: 1;
 }
 
 

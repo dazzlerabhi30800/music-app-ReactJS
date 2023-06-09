@@ -32,7 +32,7 @@
 /* Navbar Pc Styling */
 .navbar--pc {
   /* background: linear-gradient(to right, #1b0655 35%, #3b0514); */
-  background-image: url('/public/navbar-bg-2.jpg');
+  background-image: url('/navbar-bg-2.jpg');
   background-position: center;
   background-size: cover;
   padding: .7rem;

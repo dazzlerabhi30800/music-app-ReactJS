@@ -110,6 +110,14 @@ form button[type="submit"]:hover {
   z-index: 444;
 } */
 
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
 
 
 @media (width > 600px) {

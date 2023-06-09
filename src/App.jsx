@@ -6,6 +6,7 @@ import useResize from "./useResize";
 import NavbarMobile from "./Components/Pages/Navbars/NavbarMobile";
 import Home from "./Components/Pages/Home/Home";
 import AudioPlayer from "./Components/Pages/Home/AudioPlayer";
+import data from "./Components/Data/ArtistData.json";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -17,15 +18,16 @@ function App() {
   const windowWidth = useResize();
 
   const [token, setToken] = useState("");
-  const [track, setTrack] = useState(
-    JSON.parse(localStorage.getItem("track")) || ""
-  );
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
 
-  let audioRef = useRef(track && new Audio(track.audioSrc));
-
   const [searchKey, setSearchKey] = useState("");
+  const [musicData, setMusicData] = useState(data.audiPlayerData);
+  const [track, setTrack] = useState(
+    JSON.parse(localStorage.getItem("track")) || musicData[0]
+  );
+
+  let audioRef = useRef(track && new Audio(track.audioSrc));
   const [offset, setOffset] = useState(2);
   const [more, setMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
@@ -112,6 +114,8 @@ function App() {
           track={track}
           setTrack={setTrack}
           audioRef={audioRef}
+          setMusicData={setMusicData}
+          musicData={musicData}
         />
       </main>
       <AudioPlayer
@@ -120,6 +124,8 @@ function App() {
         track={track}
         setTrack={setTrack}
         audioRef={audioRef}
+        setMusicData={setMusicData}
+        musicData={musicData}
       />
       {/* <a href={AUTH_URL}>Token</a> */}
     </>

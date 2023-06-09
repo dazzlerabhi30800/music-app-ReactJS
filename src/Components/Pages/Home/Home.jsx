@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import RecentlyPlayed from "./RecentlyPlayed";
 import MusicContainer from "./MusicContainer";
-import data from "../../Data/ArtistData.json";
 
-const Home = ({ track, setTrack, setIsPlaying, isPlaying, audioRef }) => {
-  const [musicData, setMusicData] = useState(data.audiPlayerData);
+const Home = ({
+  track,
+  setTrack,
+  setIsPlaying,
+  isPlaying,
+  audioRef,
+  setMusicData,
+  musicData,
+}) => {
   return (
     <div className="home--wrapper">
       <div className="home--container">
