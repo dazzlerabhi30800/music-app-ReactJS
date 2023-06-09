@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
+import useResize from "../../../useResize";
 
 const LikeSongComp = ({ musicData }) => {
+  const windowSize = useResize();
   const [likeData, setLikeData] = useState(
     musicData.filter((data) => data.favorite === true)
   );
@@ -13,7 +15,7 @@ const LikeSongComp = ({ musicData }) => {
           return (
             <div className="like-song-comp" key={index}>
               <div className="index--comp">
-                <h3>{index + 1}.</h3>
+                {windowSize > 700 && <h3>{index + 1}.</h3>}
                 <div className="info--wrapper">
                   <img src={item.img} alt="" />
                   <div className="info">

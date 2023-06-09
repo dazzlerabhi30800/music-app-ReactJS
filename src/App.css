@@ -112,15 +112,12 @@ form button[type="submit"]:hover {
   z-index: 444;
 } */
 
-button {
-  border: none;
-  outline: none;
-}
-
+button,
+button:active,
+a:active,
 a {
-  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
-
 
 @media (width > 600px) {
   .main--container {

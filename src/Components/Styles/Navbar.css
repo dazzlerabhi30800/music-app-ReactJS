@@ -6,7 +6,7 @@
 .navbar--mobile {
   position: fixed;
   background: #0f0f0fdb;
-  padding: 0.5rem;
+  padding: 0.8rem;
   display: flex;
   justify-content: space-around;
   width: 100%;

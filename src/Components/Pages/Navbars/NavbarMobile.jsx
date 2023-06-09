@@ -1,29 +1,51 @@
 import React from "react";
-import { AiOutlineHome, AiOutlineSearch, AiOutlineHeart } from "react-icons/ai";
-import { SlSocialSpotify } from "react-icons/sl";
+import {
+  AiOutlineHome,
+  AiOutlineSearch,
+  AiOutlineHeart,
+  AiFillHome,
+  AiFillHeart,
+} from "react-icons/ai";
+import { RiSpotifyFill, RiSpotifyLine, RiSearchFill } from "react-icons/ri";
+import { useLocation, Link } from "react-router-dom";
 
 const NavbarMobile = () => {
-  const links = document.querySelectorAll(".navLink");
-  links.forEach((link, index) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      links.forEach((link) => link.classList.remove("active"));
-      links[index].classList.add("active");
-    });
-  });
+  const location = useLocation();
   return (
     <nav className="navbar--mobile">
-      <a href="#" className="navLink active">
-        <AiOutlineHome />
+      <Link
+        to="/"
+        className={`navLink ${location.pathname === "/" ? "active" : ""}`}
+      >
+        {location.pathname === "/" ? <AiFillHome /> : <AiOutlineHome />}
+      </Link>
+      <a
+        href="#"
+        className={`navLink ${location.pathname === "/search" ? "active" : ""}`}
+      >
+        {location.pathname === "/search" ? (
+          <RiSearchFill />
+        ) : (
+          <AiOutlineSearch />
+        )}
       </a>
-      <a href="#" className="navLink">
-        <AiOutlineSearch />
-      </a>
-      <a href="#" className="navLink">
-        <AiOutlineHeart />
-      </a>
-      <a href="#" className="navLink">
-        <SlSocialSpotify />
+      <Link
+        to="/liked"
+        className={`navLink ${location.pathname === "/liked" ? "active" : ""}`}
+      >
+        {location.pathname === "/liked" ? <AiFillHeart /> : <AiOutlineHeart />}
+      </Link>
+      <a
+        href="#"
+        className={`navLink ${
+          location.pathname === "/subscription" ? "active" : ""
+        }`}
+      >
+        {location.pathname === "/subscription" ? (
+          <RiSpotifyFill />
+        ) : (
+          <RiSpotifyLine />
+        )}
       </a>
     </nav>
   );

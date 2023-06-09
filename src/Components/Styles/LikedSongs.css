@@ -59,18 +59,21 @@
 .index--comp {
     display: flex;
     gap: 1rem;
+    flex-basis: auto;
+    flex-grow: 1;
     align-items: center;
 }
 
 .info--wrapper {
     display: flex;
+    flex-grow: 1;
     gap: .9rem;
     align-items: center;
 }
 
 .info--wrapper>img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 5px;
 }
 
@@ -80,7 +83,8 @@
 }
 
 .info h4 {
-    font-size: .9rem;
+    font-size: clamp(.8rem, 1.2vw, 1rem);
+    width: 20ch;
 }
 
 .info>p {
@@ -90,12 +94,21 @@
 .like-song-comp .favoriteIcon {
     border: none;
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1.7rem;
     border-radius: 50%;
     outline: none;
-    box-shadow: 0px 0px 40px 1px #6cfa6caf;
-    background: #41eb41e7;
     transition: .3s linear;
-    color: #fcfcfc;
-    margin-left: 6rem;
+    flex-basis: 15%;
+    color: #3af563;
+    margin-right: auto;
+}
+
+
+@media (width > 600px) {
+
+    .info--wrapper>img {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+    }
 }
