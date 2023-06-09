@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import LikeSongComp from "./LikeSongComp";
 
 const LikedSongs = ({ musicData }) => {
+  const [likeData, setLikeData] = useState(
+    musicData.filter((data) => data.favorite === true)
+  );
   return (
     <div className="home--wrapper">
       <div className="home--container">
@@ -14,11 +17,11 @@ const LikedSongs = ({ musicData }) => {
             <div className="playlist--info">
               <p>Playlist</p>
               <h1>Liked Songs</h1>
-              <h2>No of Songs</h2>
+              <h2>{likeData.length} Songs</h2>
             </div>
           </div>
         </header>
-        <LikeSongComp musicData={musicData} />
+        <LikeSongComp likeData={likeData} musicData={musicData} />
       </div>
     </div>
   );

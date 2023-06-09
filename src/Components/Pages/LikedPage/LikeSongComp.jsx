@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiFillHeart } from "react-icons/ai";
 import useResize from "../../../useResize";
 
-const LikeSongComp = ({ musicData }) => {
+const LikeSongComp = ({ musicData, likeData }) => {
   const windowSize = useResize();
-  const [likeData, setLikeData] = useState(
-    musicData.filter((data) => data.favorite === true)
-  );
 
   return (
     <div className="like-song-wrapper">
