@@ -1,6 +1,7 @@
 .favorite--header {
+    --header-height: 20vh;
     background: linear-gradient(to right, #f65e8e43, rgba(131, 255, 125, 0.389) 90%);
-    height: 25vh;
+    height: var(--header-height);
     display: flex;
     padding: 1rem 1rem;
     /* justify-content: center; */
@@ -18,7 +19,7 @@
 }
 
 .favorite--header .LikeIcon {
-    --height-header: 3.5rem;
+    --height-header: 2rem;
     padding: var(--height-header);
     font-size: var(--height-header);
     border-radius: 5px;
@@ -34,7 +35,7 @@
 }
 
 .favorite--header .playlist--info>h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 2.5vw, 2.3rem);
     font-weight: 700;
     margin: 0;
 }
@@ -104,11 +105,23 @@
 }
 
 
-@media (width > 600px) {
+@media (width > 700px) {
+    .favorite--header {
+        --header-height: 25vh;
+    }
 
     .info--wrapper>img {
         width: 60px;
         height: 60px;
         border-radius: 5px;
+    }
+
+    .favorite--header .LikeIcon {
+        --height-header: 3.5rem;
+    }
+
+
+    .favorite--header .playlist--info>h1 {
+        font-size: clamp(1.5rem, 3vw, 3.1rem);
     }
 }
