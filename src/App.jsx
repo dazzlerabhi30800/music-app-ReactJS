@@ -7,6 +7,8 @@ import NavbarMobile from "./Components/Pages/Navbars/NavbarMobile";
 import Home from "./Components/Pages/Home/Home";
 import AudioPlayer from "./Components/Pages/Home/AudioPlayer";
 import data from "./Components/Data/ArtistData.json";
+import { Routes, Route } from "react-router-dom";
+import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -22,7 +24,9 @@ function App() {
   const [artists, setArtists] = useState([]);
 
   const [searchKey, setSearchKey] = useState("");
-  const [musicData, setMusicData] = useState(data.audiPlayerData);
+  const [musicData, setMusicData] = useState(
+    JSON.parse(localStorage.getItem("music")) || data.audiPlayerData
+  );
   const [track, setTrack] = useState(
     JSON.parse(localStorage.getItem("track")) || musicData[0]
   );
@@ -49,21 +53,25 @@ function App() {
     setToken(token);
   }, []);
 
-  const logout = () => {
-    setToken("");
-    window.localStorage.removeItem("token");
-  };
+  // const logout = () => {
+  //   setToken("");
+  //   window.localStorage.removeItem("token");
+  // };
 
-  useEffect(() => {
-    const tokenData = window.localStorage.getItem("token");
-    // setToken(token);
-  }, []);
+  // useEffect(() => {
+  //   const tokenData = window.localStorage.getItem("token");
+  //   // setToken(token);
+  // }, []);
 
   useEffect(() => {
     if (track) {
       setTrack({ ...track, playing: false });
     }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("music", JSON.stringify(musicData));
+  }, [musicData]);
 
   useEffect(() => {
     localStorage.setItem("track", JSON.stringify(track));
@@ -100,7 +108,7 @@ function App() {
         {windowWidth > 600 ? (
           <NavbarPC
             token={token}
-            logout={logout}
+            // logout={logout}
             AUTH_URL={AUTH_URL}
             setTotalResults={setTotalResults}
             setArtists={setArtists}
@@ -110,16 +118,29 @@ function App() {
         ) : (
           <NavbarMobile />
         )}
-        <Home
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          track={track}
-          setTrack={setTrack}
-          audioRef={audioRef}
-          setMusicData={setMusicData}
-          musicData={musicData}
-          isExpand={isExpand}
-        />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Home
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                track={track}
+                setTrack={setTrack}
+                audioRef={audioRef}
+                setMusicData={setMusicData}
+                musicData={musicData}
+                isExpand={isExpand}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/liked"
+            element={<LikedSongs musicData={musicData} />}
+          />
+        </Routes>
       </main>
       <AudioPlayer
         isPlaying={isPlaying}

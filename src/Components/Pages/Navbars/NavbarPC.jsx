@@ -10,6 +10,7 @@ import {
   AiFillHeart,
 } from "react-icons/ai";
 import artistData from "../../Data/NavbarArtistData.json";
+import { Link } from "react-router-dom";
 
 const NavbarPC = ({
   token,
@@ -24,10 +25,10 @@ const NavbarPC = ({
   return (
     <nav className="navbar--pc">
       <div className="header--pc">
-        <a onClick={(e) => e.preventDefault()} href="#">
+        <Link to="/">
           <AiOutlineHome />
           <span>Home</span>
-        </a>
+        </Link>
         <a onClick={(e) => e.preventDefault()} href="#">
           <AiOutlineSearch />
           <span>Search</span>
@@ -41,17 +42,19 @@ const NavbarPC = ({
           <div>Library</div>
         </div>
         <div className="playlist--wrapper">
-          <div className="playlist likedSongs">
-            <div className="playlistIcon LikeIcon">
-              <AiFillHeart />
+          <Link to="/liked">
+            <div className="playlist likedSongs">
+              <div className="playlistIcon LikeIcon">
+                <AiFillHeart />
+              </div>
+              <div className="playlist--info">
+                <h2>Liked Songs</h2>
+                <p>
+                  <AiFillPushpin /> Playlist.<span>No of songs</span>
+                </p>
+              </div>
             </div>
-            <div className="playlist--info">
-              <h2>Liked Songs</h2>
-              <p>
-                <AiFillPushpin /> Playlist.<span>No of songs</span>
-              </p>
-            </div>
-          </div>
+          </Link>
           <div className="playlist playlistSongs">
             <div className="playlistIcon tuneIcon">
               <FaItunesNote />
