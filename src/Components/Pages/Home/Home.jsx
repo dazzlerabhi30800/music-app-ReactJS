@@ -10,6 +10,7 @@ const Home = ({
   audioRef,
   setMusicData,
   musicData,
+  isExpand,
 }) => {
   return (
     <div className="home--wrapper">
@@ -19,6 +20,7 @@ const Home = ({
           setTrack={setTrack}
           setMusicData={setMusicData}
           musicData={musicData}
+          isExpand={isExpand}
           setIsPlaying={setIsPlaying}
           isPlaying={isPlaying}
           audioRef={audioRef}

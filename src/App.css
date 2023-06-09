@@ -9,6 +9,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  position: relative;
+  overflow-x: hidden;
 }
 
 #root {

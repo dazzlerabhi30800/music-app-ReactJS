@@ -32,6 +32,8 @@ function App() {
   const [more, setMore] = useState(true);
   const [totalResults, setTotalResults] = useState(0);
 
+  const [isExpand, setIsExpand] = useState(false);
+
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
@@ -116,6 +118,7 @@ function App() {
           audioRef={audioRef}
           setMusicData={setMusicData}
           musicData={musicData}
+          isExpand={isExpand}
         />
       </main>
       <AudioPlayer
@@ -126,6 +129,8 @@ function App() {
         audioRef={audioRef}
         setMusicData={setMusicData}
         musicData={musicData}
+        isExpand={isExpand}
+        setIsExpand={setIsExpand}
       />
       {/* <a href={AUTH_URL}>Token</a> */}
     </>

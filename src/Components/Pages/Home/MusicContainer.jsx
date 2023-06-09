@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlinePause } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
+import useResize from "../../../useResize";
 
 const MusicContainer = ({
   setTrack,
   setMusicData,
   musicData,
   setIsPlaying,
+  isExpand,
   isPlaying,
   audioRef,
 }) => {
@@ -20,6 +22,7 @@ const MusicContainer = ({
       })
     );
   };
+  const windowSize = useResize();
 
   const handlePlayback = (id) => {
     setMusicData(
@@ -44,7 +47,7 @@ const MusicContainer = ({
     );
   };
   return (
-    <div>
+    <div className={`${windowSize < 700 && isExpand ? "hide" : ""}`}>
       <h3>Music To Play</h3>
       <div className="music--container">
         {musicData.map((audio, index) => {
