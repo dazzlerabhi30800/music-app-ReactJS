@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchList from "./SearchList";
 
-const SearchPage = ({ auth, token, setToken }) => {
+const SearchPage = ({ auth, token, setToken, handleAuthorizeSpotify }) => {
   const [searchData, setSearchData] = useState();
   const [loading, setLoading] = useState();
   return (
@@ -18,6 +18,7 @@ const SearchPage = ({ auth, token, setToken }) => {
         <SearchList
           token={token}
           setToken={setToken}
+          handleAuthorizeSpotify={handleAuthorizeSpotify}
           loading={loading}
           auth={auth}
           searchData={searchData}

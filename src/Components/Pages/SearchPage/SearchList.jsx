@@ -1,6 +1,13 @@
 import React from "react";
 
-const SearchList = ({ loading, searchData, token, setToken, auth }) => {
+const SearchList = ({
+  loading,
+  searchData,
+  token,
+  setToken,
+  auth,
+  handleAuthorizeSpotify,
+}) => {
   return (
     <div className="result--wrapper">
       {!loading && searchData ? (
@@ -39,9 +46,9 @@ const SearchList = ({ loading, searchData, token, setToken, auth }) => {
           <h3 style={{ margin: "0 auto" }}>
             {loading ? "Loading..." : "Search Your Music"}
           </h3>
-          <a className="auth--btn" href={auth}>
+          <button className="auth--btn" onClick={handleAuthorizeSpotify}>
             Sign In
-          </a>
+          </button>
         </div>
       )}
     </div>

@@ -5,13 +5,13 @@ import { getNowPlaying } from "../../../SpotifyAPI";
 
 const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
   const [searchInput, SetSearchInput] = useState();
-  async function getToken() {
-    let data = await getNowPlaying();
-    setToken(data);
-  }
-  useEffect(() => {
-    getToken();
-  }, []);
+  // async function getToken() {
+  //   let data = await getNowPlaying();
+  //   setToken(data);
+  // }
+  // useEffect(() => {
+  //   getToken();
+  // }, []);
   //   console.log(token);
   async function handleSubmit(e) {
     e.preventDefault();
