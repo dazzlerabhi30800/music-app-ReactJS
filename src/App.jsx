@@ -10,6 +10,7 @@ import data from "./Components/Data/ArtistData.json";
 import { Routes, Route } from "react-router-dom";
 import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
 import SearchPage from "./Components/Pages/SearchPage/SearchPage";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -19,6 +20,8 @@ function App() {
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
   const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
+
+  const navigate = useNavigate();
 
   const [token, setToken] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -40,7 +43,6 @@ function App() {
   const [isExpand, setIsExpand] = useState(false);
 
   useEffect(() => {
-    setToken(null);
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     if (!token && hash) {
@@ -53,6 +55,7 @@ function App() {
       window.localStorage.setItem("token", token);
     }
     setToken(token);
+    navigate("/");
   }, []);
 
   // const logout = () => {
