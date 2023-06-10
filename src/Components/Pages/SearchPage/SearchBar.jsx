@@ -5,13 +5,20 @@ import { getNowPlaying } from "../../../SpotifyAPI";
 
 const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
   const [searchInput, SetSearchInput] = useState();
+  async function getToken() {
+    let data = await getNowPlaying();
+    setToken(data);
+  }
+  useEffect(() => {
+    getToken();
+  }, []);
   //   console.log(token);
   async function handleSubmit(e) {
     e.preventDefault();
     if (token) {
       setLoading(true);
       const data = await getRecentData(searchInput, token);
-      console.log(data.tracks.items);
+      // console.log(data.tracks.items);
       setTimeout(() => {
         setLoading(false);
         setSearchData(data.tracks.items);

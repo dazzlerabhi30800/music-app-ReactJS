@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
-  console.log(CLIENT_ID);
   const REDIRECT_URI = "http://localhost:5173/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
@@ -43,21 +42,21 @@ function App() {
 
   const [isExpand, setIsExpand] = useState(false);
 
-  useEffect(() => {
-    const hash = window.location.hash;
-    let token = window.localStorage.getItem("token");
-    if (!token && hash) {
-      token = hash
-        .substring(1)
-        .split("&")
-        .find((elem) => elem.startsWith("access_token"))
-        .split("=")[1];
-      window.location = hash;
-      window.localStorage.setItem("token", token);
-    }
-    setToken(token);
-    navigate("/");
-  }, []);
+  // useEffect(() => {
+  //   const hash = window.location.hash;
+  //   let token = window.localStorage.getItem("token");
+  //   if (!token && hash) {
+  //     token = hash
+  //       .substring(1)
+  //       .split("&")
+  //       .find((elem) => elem.startsWith("access_token"))
+  //       .split("=")[1];
+  //     window.location = hash;
+  //     window.localStorage.setItem("token", token);
+  //   }
+  //   setToken(token);
+  //   navigate("/");
+  // }, []);
 
   // const logout = () => {
   //   setToken("");
@@ -83,30 +82,30 @@ function App() {
     localStorage.setItem("track", JSON.stringify(track));
   }, [track]);
 
-  const fetchArtists = async () => {
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN_2}`,
-        // Authorization: `Bearer ${token}`,
-      },
-      params: {
-        q: searchKey,
-        limit: 8,
-        offset: offset + 1,
-        // type: "artist",
-        type: "track,artist",
-      },
-    });
-    if (data && searchKey.length > 2 && more) {
-      let artistData = artists.concat(data.tracks.items);
-      let filterData = artistData.filter(
-        (a, i, b) => b.findIndex((t) => t.id === a.id) === i
-      );
-      setArtists(filterData);
-      setOffset(offset + 1);
-      setMore(artists.length >= totalResults ? false : true);
-    }
-  };
+  // const fetchArtists = async () => {
+  //   const { data } = await axios.get("https://api.spotify.com/v1/search", {
+  //     headers: {
+  //       Authorization: `Bearer ${import.meta.env.VITE_APP_ACCESS_TOKEN_2}`,
+  //       // Authorization: `Bearer ${token}`,
+  //     },
+  //     params: {
+  //       q: searchKey,
+  //       limit: 8,
+  //       offset: offset + 1,
+  //       // type: "artist",
+  //       type: "track,artist",
+  //     },
+  //   });
+  //   if (data && searchKey.length > 2 && more) {
+  //     let artistData = artists.concat(data.tracks.items);
+  //     let filterData = artistData.filter(
+  //       (a, i, b) => b.findIndex((t) => t.id === a.id) === i
+  //     );
+  //     setArtists(filterData);
+  //     setOffset(offset + 1);
+  //     setMore(artists.length >= totalResults ? false : true);
+  //   }
+  // };
 
   return (
     <>
