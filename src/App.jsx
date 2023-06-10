@@ -56,7 +56,7 @@ function App() {
         body: new URLSearchParams({
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: "http://localhost:5173/",
+          redirect_uri: "https://localhost:5173/",
           client_id: import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID,
           client_secret: import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET,
         }),
