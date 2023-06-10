@@ -11,6 +11,8 @@ import { Routes, Route } from "react-router-dom";
 import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
 import SearchPage from "./Components/Pages/SearchPage/SearchPage";
 import { useNavigate } from "react-router-dom";
+import { FaTshirt } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -20,6 +22,7 @@ function App() {
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
   const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
+  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -28,6 +31,8 @@ function App() {
   // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
+  const [redirect, setRedirect] = useState(window.location.href);
+  console.log(redirect);
 
   const [searchKey, setSearchKey] = useState("");
   const [musicData, setMusicData] = useState(
