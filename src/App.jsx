@@ -80,7 +80,7 @@ function App() {
   }, []);
   const handleAuthorizeSpotify = () => {
     const clientId = CLIENT_ID;
-    const redirectUri = "http://localhost:5173/";
+    const redirectUri = redirect;
     const scopes = ["user-read-private", "user-read-email"];
 
     // Redirect the user to the Spotify authorization URL
