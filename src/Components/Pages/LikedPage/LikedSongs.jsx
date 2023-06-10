@@ -4,7 +4,9 @@ import LikeSongComp from "./LikeSongComp";
 
 const LikedSongs = ({ musicData }) => {
   const [likeData, setLikeData] = useState(
-    musicData.filter((data) => data.favorite === true)
+    musicData
+      .filter((data) => data.favorite === true)
+      .sort((a, b) => a.date - b.date)
   );
   return (
     <div className="home--wrapper">

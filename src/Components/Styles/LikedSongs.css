@@ -99,9 +99,11 @@
     border-radius: 50%;
     outline: none;
     transition: .3s linear;
-    flex-basis: 15%;
+    flex-basis: 10%;
+    background: none;
     color: #3af563;
     margin-right: auto;
+    justify-content: space-around;
 }
 
 

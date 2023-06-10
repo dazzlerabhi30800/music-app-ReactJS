@@ -19,8 +19,8 @@ const NavbarMobile = () => {
       >
         {location.pathname === "/" ? <AiFillHome /> : <AiOutlineHome />}
       </Link>
-      <a
-        href="#"
+      <Link
+        to="/search"
         className={`navLink ${location.pathname === "/search" ? "active" : ""}`}
       >
         {location.pathname === "/search" ? (
@@ -28,7 +28,7 @@ const NavbarMobile = () => {
         ) : (
           <AiOutlineSearch />
         )}
-      </a>
+      </Link>
       <Link
         to="/liked"
         className={`navLink ${location.pathname === "/liked" ? "active" : ""}`}

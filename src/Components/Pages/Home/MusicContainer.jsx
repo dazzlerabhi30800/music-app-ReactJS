@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import { AiOutlineHeart, AiFillHeart, AiOutlinePause } from "react-icons/ai";
 import { BsFillPlayFill } from "react-icons/bs";
 import useResize from "../../../useResize";
@@ -16,7 +16,11 @@ const MusicContainer = ({
     setMusicData(
       musicData.map((data) => {
         if (data.songId === id) {
-          return { ...data, favorite: !data.favorite };
+          if (!data.favorite) {
+            return { ...data, favorite: true, date: Date.now() };
+          } else {
+            return { ...data, favorite: false, date: null };
+          }
         }
         return data;
       })

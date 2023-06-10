@@ -1,8 +1,6 @@
 .home--wrapper {
     position: relative;
-    /* z-index: 4444; */
     height: 90vh;
-    overflow: auto;
 }
 
 .home--container {
@@ -11,8 +9,10 @@
     border-radius: 3px;
     gap: 1rem;
     background: linear-gradient(90deg, rgb(12, 18, 24) 0%, rgba(0, 0, 0, 1) 100%);
-    min-height: 90vh;
+    height: inherit;
+    overflow: scroll;
     padding: 1rem;
+    padding-bottom: 10rem;
 }
 
 
@@ -28,16 +28,22 @@
     gap: 1rem;
 }
 
+.recent--container>a {
+    text-decoration: none;
+}
+
 .recent--comp {
     display: flex;
     align-items: center;
     gap: 12px;
     border-radius: 3px;
     background: linear-gradient(to left, #f67777, #7474fa);
+    color: #fff;
     width: 100%;
     font-weight: 500;
     transition: 0.3s linear;
 }
+
 
 
 
@@ -63,7 +69,7 @@ div h3 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-    padding: 1rem 0rem 9rem;
+    padding: 1rem 0rem 0rem;
 }
 
 .music--comp {
@@ -83,6 +89,7 @@ div h3 {
     height: 300px;
     object-fit: fill;
     width: 100%;
+    margin: 0 auto;
 }
 
 .music--comp>p {
@@ -102,7 +109,8 @@ div h3 {
     grid-area: five;
     place-self: start end;
     border: none;
-    padding: 10px;
+    padding: 12px;
+    display: flex;
     font-size: 1.2rem;
     border-radius: 50%;
     outline: none;
@@ -120,6 +128,7 @@ div h3 {
 
 .favoriteIcon {
     position: relative;
+    display: flex;
     transform: scale(1);
     transition: 0.3s linear;
 }
@@ -232,22 +241,22 @@ div h3 {
     }
 }
 
-.home--wrapper::-webkit-scrollbar {
+.home--container::-webkit-scrollbar {
     width: 7px;
 }
 
 
-.home--wrapper::-webkit-scrollbar-track {
+.home--container::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px 10px rgba(23, 23, 23, 0.826);
 }
 
-.home--wrapper::-webkit-scrollbar-thumb {
+.home--container::-webkit-scrollbar-thumb {
     background: #98f5ac;
     border-radius: 10px;
     transition: 0.3s ease-in-out;
 }
 
-.home--wrapper::-webkit-scrollbar-thumb:hover {
+.home--container::-webkit-scrollbar-thumb:hover {
     background: #f1f0f0;
     border-radius: 10px;
 }

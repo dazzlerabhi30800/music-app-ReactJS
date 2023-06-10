@@ -7,7 +7,7 @@
     background: rgb(22, 4, 18);
     color: #fbfafa;
     position: fixed;
-    bottom: 48px;
+    bottom: 60px;
     padding: 1rem;
     width: 100%;
     left: 0;
@@ -114,13 +114,14 @@
 .playback button {
     background: #fff;
     color: #000;
-    padding: 8px;
+    padding: 10px;
+    display: flex;
     border-radius: 50%;
     font-size: 1.2rem;
 }
 
 button.play--btn {
-    background: #39f439;
+    background: #6cfa6c;
     color: #000000;
 }
 
@@ -222,7 +223,7 @@ button.play--btn {
     border: none;
     outline: none;
     font-size: 1.3rem;
-    background: rgba(31, 31, 31, 0.989);
+    background: rgba(121, 121, 121, 0.989);
     padding: 8px;
     border-radius: 5px;
     position: absolute;
@@ -250,7 +251,7 @@ button.play--btn {
 }
 
 @media (hover:hover) {
-    button:not(.expand--btn):hover {
+    button:not(.expand--btn, .search--btn, .listen--btn):hover {
         filter: brightness(50%);
     }
 

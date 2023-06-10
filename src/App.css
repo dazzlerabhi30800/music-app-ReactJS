@@ -11,20 +11,18 @@ body {
   font-family: "Poppins", sans-serif;
   position: relative;
   overflow-x: hidden;
+  height: 100vh;
 }
 
 #root {
-  min-height: 100vh;
+  height: 100vh;
   color: #ffffff;
   background: rgb(24, 0, 48);
   text-align: left;
-  /* background: radial-gradient(circle,
-      rgba(24, 0, 48, 1) 12%,
-      rgba(2, 1, 25, 1) 100%); */
-
   background: linear-gradient(270deg,
       rgb(23, 22, 23) 20%,
       rgb(25, 1, 9) 90%);
+  overflow: hidden;
 }
 
 .main--container {
@@ -46,54 +44,10 @@ h1 {
 }
 
 
-/* button:not([type="submit"]) {
-  padding: 6px 1.5rem;
-  margin: 10px 0;
-  border-radius: 5px;
-  text-transform: uppercase;
-  background: #fff;
-  border: none;
-  outline: none;
-  color: #000;
-  font-size: 1rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-button:not([type="submit"]):hover {
-  background: #ccc;
-} */
 
 
-form {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-  width: fit-content;
-}
 
-form input {
-  color: #000;
-  padding: 5px 1rem;
-  border-radius: 5px;
-  width: 100%;
-}
 
-form button[type="submit"] {
-  border: none;
-  outline: none;
-  background: yellow;
-  padding: 5px 12px;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000;
-}
-
-form button[type="submit"]:hover {
-  background: #7ff5a6;
-}
 
 
 .home--wrapper {
@@ -101,22 +55,21 @@ form button[type="submit"]:hover {
 }
 
 
-/* .audio--player {
-  background: rgb(22, 4, 18);
-  color: #fbfafa;
-  position: fixed;
-  bottom: 35px;
-  padding: 1rem;
-  width: 100%;
-  left: 0;
-  z-index: 444;
-} */
-
 button,
 button:active,
 a:active,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  display: flex;
+  border: none;
+  outline: none;
 }
 
 @media (width > 600px) {
@@ -132,5 +85,11 @@ a {
     min-width: 300px;
     flex-basis: 50%;
     max-width: 350px;
+  }
+}
+
+@media (hover:hover) {
+  button {
+    cursor: pointer;
   }
 }

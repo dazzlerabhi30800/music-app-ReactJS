@@ -9,6 +9,7 @@ import AudioPlayer from "./Components/Pages/Home/AudioPlayer";
 import data from "./Components/Data/ArtistData.json";
 import { Routes, Route } from "react-router-dom";
 import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
+import SearchPage from "./Components/Pages/SearchPage/SearchPage";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -140,6 +141,7 @@ function App() {
             path="/liked"
             element={<LikedSongs musicData={musicData} />}
           />
+          <Route exact path="/search" element={<SearchPage />} />
         </Routes>
       </main>
       <AudioPlayer

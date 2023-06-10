@@ -1,10 +1,12 @@
 import queryString from "query-string";
+import axios from "axios";
 
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 // const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`;
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me`;
 const RECENT_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
+const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
 
 const client_id = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
 const client_secret = import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET;
@@ -26,61 +28,22 @@ const getAccessToken = async () => {
   return response.json();
 };
 
-export const getNowPlaying = async (
-  client_id,
-  client_secret,
-  refresh_token,
-  endPoint
-) => {
-  const { access_token } = await getAccessToken(
-    client_id,
-    client_secret,
-    refresh_token
-  );
-  return fetch(endPoint, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
+export const getNowPlaying = async () => {
+  const { access_token } = await getAccessToken();
+  return access_token;
 };
 
-export default async function getRecentData(
-  client_id,
-  client_secret,
-  refresh_token,
-  endPoint
-) {
-  const response = await getNowPlaying(
-    client_id,
-    client_secret,
-    refresh_token,
-    endPoint
-  );
-  if (response.status === 204 || response.status > 400) {
-    return false;
-  }
-  console.log(response);
-
-  const data = await response.json();
+export default async function getRecentData(searchKey, token) {
+  const { data } = await axios.get("https://api.spotify.com/v1/search", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    params: {
+      q: searchKey,
+      limit: 20,
+      // type: "artist",
+      type: "track,artist,album",
+    },
+  });
   return data;
 }
-
-// export default async function getNowRecentTracks(
-//   client_id,
-//   client_secret,
-//   refresh_token
-// ) {
-//   const response = await getNowPlaying(
-//     client_id,
-//     client_secret,
-//     refresh_token,
-//     RECENT_ENDPOINT
-//   );
-//   if (response.status === 204 || response.status > 400) {
-//     return false;
-//   }
-
-//   const data = await response.json();
-//   return data;
-// }

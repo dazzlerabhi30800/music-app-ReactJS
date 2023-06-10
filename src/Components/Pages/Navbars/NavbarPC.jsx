@@ -9,8 +9,9 @@ import {
   AiFillPushpin,
   AiFillHeart,
 } from "react-icons/ai";
+import { RiSearchFill } from "react-icons/ri";
 import artistData from "../../Data/NavbarArtistData.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const NavbarPC = ({
   token,
@@ -21,18 +22,26 @@ const NavbarPC = ({
   setSearchKey,
   searchKey,
 }) => {
+  const location = useLocation();
   const [artist, setArtist] = useState(artistData.data);
   return (
     <nav className="navbar--pc">
       <div className="header--pc">
-        <Link to="/">
-          <AiOutlineHome />
+        <Link to="/" className={`${location.pathname === "/" ? "active" : ""}`}>
+          {location.pathname === "/" ? <AiFillHome /> : <AiOutlineHome />}
           <span>Home</span>
         </Link>
-        <a onClick={(e) => e.preventDefault()} href="#">
-          <AiOutlineSearch />
+        <Link
+          to="/search"
+          className={`${location.pathname === "/search" ? "active" : ""}`}
+        >
+          {location.pathname === "/search" ? (
+            <RiSearchFill />
+          ) : (
+            <AiOutlineSearch />
+          )}
           <span>Search</span>
-        </a>
+        </Link>
       </div>
       <div className="library--wrapper">
         <div className="libraryIcon">
@@ -42,7 +51,10 @@ const NavbarPC = ({
           <div>Library</div>
         </div>
         <div className="playlist--wrapper">
-          <Link to="/liked">
+          <Link
+            to="/liked"
+            className={`${location.pathname === "/liked" ? "active" : ""}`}
+          >
             <div className="playlist likedSongs">
               <div className="playlistIcon LikeIcon">
                 <AiFillHeart />
