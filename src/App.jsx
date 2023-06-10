@@ -24,7 +24,7 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [accessToken, setAccessToken] = useState("");
 
   // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -49,7 +49,7 @@ function App() {
   const [isExpand, setIsExpand] = useState(false);
 
   useEffect(() => {
-    setToken();
+    // setToken();
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     if (!token && hash) {
@@ -61,7 +61,7 @@ function App() {
       window.location = hash;
       window.localStorage.setItem("token", token);
     }
-    setToken(token);
+    setAccessToken(token);
   }, []);
 
   const handleAuthorizeSpotify = () => {
@@ -82,9 +82,9 @@ function App() {
     localStorage.setItem("track", JSON.stringify(track));
   }, [track]);
 
-  useEffect(() => {
-    localStorage.setItem("token", token);
-  }, [token]);
+  // useEffect(() => {
+  //   localStorage.setItem("token", accessToken);
+  // }, [token]);
 
   return (
     <>
@@ -92,7 +92,7 @@ function App() {
         {/* <a href={AUTH_URL}>Token</a> */}
         {windowWidth > 600 ? (
           <NavbarPC
-            token={token}
+            token={accessToken}
             // logout={logout}
             AUTH_URL={AUTH_URL}
             setTotalResults={setTotalResults}
@@ -132,8 +132,8 @@ function App() {
               <SearchPage
                 handleAuthorizeSpotify={handleAuthorizeSpotify}
                 auth={AUTH_URL}
-                token={token}
-                setToken={setToken}
+                token={accessToken}
+                setToken={setAccessToken}
               />
             }
           />

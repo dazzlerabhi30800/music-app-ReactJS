@@ -47,7 +47,7 @@ const SearchList = ({
             {loading ? "Loading..." : "Search Your Music"}
           </h3>
           <a className={`auth--btn`} href={auth}>
-            {token !== undefined && token.length > 10
+            {token !== undefined
               ? "You have Signed In"
               : "Sign In to Search Songs"}
           </a>
