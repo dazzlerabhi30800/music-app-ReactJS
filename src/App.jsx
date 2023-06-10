@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
+  console.log(CLIENT_ID);
   const REDIRECT_URI = "http://localhost:5173/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
