@@ -19,10 +19,8 @@ function App() {
   const REDIRECT_URI = "http://localhost:5173/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${REDIRECT_URI}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
   const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
-  const location = useLocation();
 
   const navigate = useNavigate();
 
@@ -31,7 +29,8 @@ function App() {
   // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
-  const [redirect, setRedirect] = useState(window.location.href);
+  const redirect = window.location.href.replaceAll("/search", "/");
+  const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
   console.log(redirect);
 
   const [searchKey, setSearchKey] = useState("");
@@ -50,43 +49,23 @@ function App() {
   const [isExpand, setIsExpand] = useState(false);
 
   useEffect(() => {
-    const getAccessToken = async () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const code = urlParams.get("code");
-
-      // Make a POST request to exchange the authorization code for an access token
-      const response = await fetch("https://accounts.spotify.com/api/token", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({
-          grant_type: "authorization_code",
-          code: code,
-          redirect_uri: redirect,
-          client_id: import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID,
-          client_secret: import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET,
-        }),
-      });
-      const { access_token } = await response.json();
-      // console.log(access_token);
-      if (access_token) {
-        setToken(access_token);
-      }
-    };
-    if (window.location.search.includes("code")) {
-      getAccessToken();
+    setToken();
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token");
+    if (!token && hash) {
+      token = hash
+        .substring(1)
+        .split("&")
+        .find((elem) => elem.startsWith("access_token"))
+        .split("=")[1];
+      window.location = hash;
+      window.localStorage.setItem("token", token);
     }
+    setToken(token);
   }, []);
-  const handleAuthorizeSpotify = () => {
-    const clientId = CLIENT_ID;
-    const redirectUri = redirect;
-    const scopes = ["user-read-private", "user-read-email"];
 
-    // Redirect the user to the Spotify authorization URL
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
-      "%20"
-    )}&response_type=code`;
+  const handleAuthorizeSpotify = () => {
+    console.log("hello");
   };
 
   useEffect(() => {
@@ -110,7 +89,7 @@ function App() {
   return (
     <>
       <main className="main--container">
-        {/* <button onClick={handleAuthorizeSpotify}>Token</button> */}
+        {/* <a href={AUTH_URL}>Token</a> */}
         {windowWidth > 600 ? (
           <NavbarPC
             token={token}

@@ -25,10 +25,6 @@ const Home = ({
           isPlaying={isPlaying}
           audioRef={audioRef}
         />
-        {/* Made for You
-    Popular and trending
-    editor's pick
-  best of artist */}
       </div>
     </div>
   );

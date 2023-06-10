@@ -15,7 +15,7 @@ const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
   //   console.log(token);
   async function handleSubmit(e) {
     e.preventDefault();
-    if (token) {
+    if (token !== undefined) {
       setLoading(true);
       const data = await getRecentData(searchInput, token);
       // console.log(data.tracks.items);
