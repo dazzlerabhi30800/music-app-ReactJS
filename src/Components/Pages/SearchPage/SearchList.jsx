@@ -46,8 +46,8 @@ const SearchList = ({
           <h3 style={{ margin: "0 auto" }}>
             {loading ? "Loading..." : "Search Your Music"}
           </h3>
-          <button className="auth--btn" onClick={handleAuthorizeSpotify}>
-            Sign In
+          <button className={`auth--btn`} onClick={handleAuthorizeSpotify}>
+            {token ? "You have Signed In" : "Sign In to Search Songs"}
           </button>
         </div>
       )}

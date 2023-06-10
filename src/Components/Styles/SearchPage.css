@@ -123,14 +123,19 @@ input::placeholder {
 .auth--container {
     display: flex;
     flex-direction: column;
+    text-align: center;
     gap: 1rem;
 }
 
 .auth--btn {
     color: #000;
     background: #5af674;
-    padding: 8px 10px;
+    padding: 10px 15px;
     font-weight: 600;
+    width: fit-content;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    display: flex;
     border-radius: 3px;
     transition: 0.3s linear;
 }
