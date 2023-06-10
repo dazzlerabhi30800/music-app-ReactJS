@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchList = ({ loading, searchData }) => {
+const SearchList = ({ loading, searchData, token, setToken, auth }) => {
   return (
     <div className="result--wrapper">
       {!loading && searchData ? (
@@ -32,9 +32,17 @@ const SearchList = ({ loading, searchData }) => {
           })}
         </div>
       ) : (
-        <h3 style={{ margin: "0 auto" }}>
-          {loading ? "Loading..." : "Search Your Music"}
-        </h3>
+        <div
+          className="auth--container"
+          style={{ margin: "0 auto", textAlign: "center" }}
+        >
+          <h3 style={{ margin: "0 auto" }}>
+            {loading ? "Loading..." : "Search Your Music"}
+          </h3>
+          <a className="auth--btn" href={auth}>
+            Sign In
+          </a>
+        </div>
       )}
     </div>
   );

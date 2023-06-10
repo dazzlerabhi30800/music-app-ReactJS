@@ -40,6 +40,7 @@ function App() {
   const [isExpand, setIsExpand] = useState(false);
 
   useEffect(() => {
+    setToken(null);
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token");
     if (!token && hash) {
@@ -141,7 +142,13 @@ function App() {
             path="/liked"
             element={<LikedSongs musicData={musicData} />}
           />
-          <Route exact path="/search" element={<SearchPage />} />
+          <Route
+            exact
+            path="/search"
+            element={
+              <SearchPage auth={AUTH_URL} token={token} setToken={setToken} />
+            }
+          />
         </Routes>
       </main>
       <AudioPlayer

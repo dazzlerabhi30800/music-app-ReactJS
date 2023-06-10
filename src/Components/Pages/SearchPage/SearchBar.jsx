@@ -3,27 +3,22 @@ import { FaSearch } from "react-icons/fa";
 import getRecentData from "../../../SpotifyAPI";
 import { getNowPlaying } from "../../../SpotifyAPI";
 
-const SearchBar = ({ setLoading, setSearchData }) => {
+const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
   const [searchInput, SetSearchInput] = useState();
-  const [token, setToken] = useState();
   //   console.log(token);
-
-  async function getToken() {
-    let newToken = await getNowPlaying();
-    setToken(newToken);
-  }
-  useEffect(() => {
-    getToken();
-  }, []);
   async function handleSubmit(e) {
-    setLoading(true);
     e.preventDefault();
-    const data = await getRecentData(searchInput, token);
-    console.log(data.tracks.items);
-    setTimeout(() => {
-      setLoading(false);
-      setSearchData(data.tracks.items);
-    }, 800);
+    if (token) {
+      setLoading(true);
+      const data = await getRecentData(searchInput, token);
+      console.log(data.tracks.items);
+      setTimeout(() => {
+        setLoading(false);
+        setSearchData(data.tracks.items);
+      }, 800);
+    } else {
+      alert("Sign in To search");
+    }
   }
   return (
     <div className="search--wrapper">
