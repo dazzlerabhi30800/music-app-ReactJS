@@ -23,9 +23,9 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [token, setToken] = useState(
-    JSON.parse(localStorage.getItem("token")) || ""
-  );
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+
+  // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
 
@@ -99,7 +99,7 @@ function App() {
   }, [track]);
 
   useEffect(() => {
-    localStorage.setItem("token", JSON.stringify(token));
+    localStorage.setItem("token", token);
   }, [token]);
 
   return (
