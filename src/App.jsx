@@ -23,7 +23,9 @@ function App() {
 
   const navigate = useNavigate();
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || ""
+  );
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
 
@@ -56,7 +58,7 @@ function App() {
         body: new URLSearchParams({
           grant_type: "authorization_code",
           code: code,
-          redirect_uri: "https://localhost:5173/",
+          redirect_uri: "http://localhost:5173/",
           client_id: import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID,
           client_secret: import.meta.env.VITE_APP_SPOTIFY_CLIENT_SECRET,
         }),
