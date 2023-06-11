@@ -33,9 +33,10 @@
 /* Navbar Pc Styling */
 .navbar--pc {
   /* background: linear-gradient(to right, #1b0655 35%, #3b0514); */
-  background-image: url('/navbar-bg-2.jpg');
+  background-image: url('/bg-2.jpg');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   padding: .7rem;
   position: sticky;
   /* position: fixed; */
@@ -61,7 +62,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
   border-radius: 5px;
   font-size: 1.6rem;
   color: #b6b3b3;

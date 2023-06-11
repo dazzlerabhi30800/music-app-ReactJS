@@ -110,6 +110,7 @@ const AudioPlayer = ({
   }, [windowSize]);
 
   const handlePrevSong = () => {
+    audioRef.current.currentTime = 0;
     let prevIndex = index - 1 < 0 ? musicData.length - 1 : index - 1;
     setTrack(musicData[prevIndex]);
     audioRef.current.src = musicData[prevIndex].audioSrc;
@@ -119,6 +120,7 @@ const AudioPlayer = ({
     handleMusicData(musicData[prevIndex].songId, true);
   };
   const handleNextSong = () => {
+    audioRef.current.currentTime = 0;
     const nextIndex = index + 1 > musicData.length - 1 ? 0 : index + 1;
     setTrack(musicData[nextIndex]);
     audioRef.current.src = musicData[nextIndex].audioSrc;
