@@ -25,7 +25,6 @@ function App() {
   const [artists, setArtists] = useState([]);
   const redirect = window.location.href.replaceAll("/search", "/");
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
-  console.log(redirect);
 
   const [searchKey, setSearchKey] = useState("");
   const [musicData, setMusicData] = useState(
