@@ -13,15 +13,7 @@ import { RiSearchFill } from "react-icons/ri";
 import artistData from "../../Data/NavbarArtistData.json";
 import { Link, useLocation } from "react-router-dom";
 
-const NavbarPC = ({
-  token,
-  logout,
-  AUTH_URL,
-  setTotalResults,
-  setArtists,
-  setSearchKey,
-  searchKey,
-}) => {
+const NavbarPC = () => {
   const location = useLocation();
   const [artist, setArtist] = useState(artistData.data);
   return (

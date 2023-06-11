@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import "./App.css";
 import NavbarPC from "./Components/Pages/Navbars/NavbarPC";
 import useResize from "./useResize";
@@ -10,9 +9,6 @@ import data from "./Components/Data/ArtistData.json";
 import { Routes, Route } from "react-router-dom";
 import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
 import SearchPage from "./Components/Pages/SearchPage/SearchPage";
-import { useNavigate } from "react-router-dom";
-import { FaTshirt } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -21,8 +17,6 @@ function App() {
   const RESPONSE_TYPE = "token";
   const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
-
-  const navigate = useNavigate();
 
   const [accessToken, setAccessToken] = useState("");
 
@@ -42,9 +36,6 @@ function App() {
   );
 
   let audioRef = useRef(track && new Audio(track.audioSrc));
-  const [offset, setOffset] = useState(2);
-  const [more, setMore] = useState(true);
-  const [totalResults, setTotalResults] = useState(0);
 
   const [isExpand, setIsExpand] = useState(false);
 
@@ -90,19 +81,7 @@ function App() {
     <>
       <main className="main--container">
         {/* <a href={AUTH_URL}>Token</a> */}
-        {windowWidth > 600 ? (
-          <NavbarPC
-            token={accessToken}
-            // logout={logout}
-            AUTH_URL={AUTH_URL}
-            setTotalResults={setTotalResults}
-            setArtists={setArtists}
-            searchKey={searchKey}
-            setSearchKey={setSearchKey}
-          />
-        ) : (
-          <NavbarMobile />
-        )}
+        {windowWidth > 600 ? <NavbarPC /> : <NavbarMobile />}
         <Routes>
           <Route
             exact

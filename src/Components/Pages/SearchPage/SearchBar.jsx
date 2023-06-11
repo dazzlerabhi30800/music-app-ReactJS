@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import getRecentData from "../../../SpotifyAPI";
 import { getNowPlaying } from "../../../SpotifyAPI";
 
 const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
   const [searchInput, SetSearchInput] = useState();
+  const searchRef = useRef();
   // async function getToken() {
   //   let data = await getNowPlaying();
   //   setToken(data);
@@ -18,6 +19,7 @@ const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
     if (token !== undefined) {
       setLoading(true);
       const data = await getRecentData(searchInput, token);
+      searchRef.current.blur();
       // console.log(data.tracks.items);
       setTimeout(() => {
         setLoading(false);
@@ -35,9 +37,8 @@ const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
           name="input"
           placeholder="search your song, artist or album"
           required
-          //   pattern="\S+"
+          ref={searchRef}
           pattern="\S+.*"
-          //   value={searchInput}
           onChange={(e) => SetSearchInput(e.target.value)}
         />
         <button className="search--btn" type="submit">
