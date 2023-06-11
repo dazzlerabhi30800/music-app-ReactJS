@@ -129,7 +129,6 @@ input::placeholder {
 
 .auth--btn {
     color: #000;
-    background: #5af674;
     padding: 10px 15px;
     font-weight: 600;
     width: fit-content;
@@ -138,6 +137,14 @@ input::placeholder {
     display: flex;
     border-radius: 3px;
     transition: 0.3s linear;
+}
+
+.sign--in {
+    background: #5af674;
+}
+
+.logout--btn {
+    background: #fb2ecb;
 }
 
 @media (hover:hover) {
@@ -162,7 +169,11 @@ input::placeholder {
         font-weight: 600;
     }
 
-    .auth--btn:hover {
+    .sign--in:hover {
         background: #2ef34f;
+    }
+
+    .logout--btn:hover {
+        background: #fd568b;
     }
 }

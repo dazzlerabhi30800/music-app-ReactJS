@@ -8,6 +8,11 @@ const SearchList = ({
   auth,
   handleAuthorizeSpotify,
 }) => {
+  const handleLogout = () => {
+    setToken(null);
+    console.log("hello");
+    window.localStorage.removeItem("token");
+  };
   return (
     <div className="result--wrapper">
       {!loading && searchData ? (
@@ -46,11 +51,14 @@ const SearchList = ({
           <h3 style={{ margin: "0 auto" }}>
             {loading ? "Loading..." : "Search Your Music"}
           </h3>
-          <a className={`auth--btn`} href={auth}>
-            {token !== undefined
-              ? "You have Signed In"
-              : "Sign In to Search Songs"}
+          <a className="auth--btn sign--in" href={auth}>
+            {token !== null ? "You have Signed In" : "Sign In to Search Songs"}
           </a>
+          {token && (
+            <button className="auth--btn logout--btn" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </div>
       )}
     </div>

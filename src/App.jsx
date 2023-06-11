@@ -18,7 +18,7 @@ function App() {
   const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
 
-  const [accessToken, setAccessToken] = useState("");
+  const [accessToken, setAccessToken] = useState(null);
 
   // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
@@ -73,9 +73,10 @@ function App() {
     localStorage.setItem("track", JSON.stringify(track));
   }, [track]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("token", accessToken);
-  // }, [token]);
+  useEffect(() => {
+    let tokenNew = window.localStorage.getItem("token");
+    setAccessToken(tokenNew);
+  });
 
   return (
     <>
