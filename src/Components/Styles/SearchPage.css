@@ -58,20 +58,23 @@ input::placeholder {
 .result--wrapper {
     display: flex;
     width: 100%;
+    padding: 1rem 0;
 }
 
 .result--container {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 100%);
     width: 100%;
-    gap: 1rem;
+    gap: 2rem;
+    padding: 1rem 0;
 }
 
 .result--comp {
     display: flex;
     align-items: center;
     padding: 1rem;
-    background: rgb(44, 44, 45);
+    /* background: rgb(44, 44, 45); */
+    background: linear-gradient(270deg, rgb(31, 31, 85) 10%, rgb(34, 32, 98) 30%);
     justify-content: space-between;
 }
 

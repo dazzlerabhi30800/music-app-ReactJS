@@ -9,6 +9,7 @@ import data from "./Components/Data/ArtistData.json";
 import { Routes, Route } from "react-router-dom";
 import LikedSongs from "./Components/Pages/LikedPage/LikedSongs";
 import SearchPage from "./Components/Pages/SearchPage/SearchPage";
+import LoadingBar from "react-top-loading-bar";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
@@ -20,11 +21,13 @@ function App() {
 
   const [accessToken, setAccessToken] = useState(null);
 
-  // const [token, setToken] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
   const redirect = window.location.href.replaceAll("/search", "/");
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
+
+  // Loading Bar Progress
+  const [progress, setProgress] = useState(100);
 
   const [searchKey, setSearchKey] = useState("");
   const [musicData, setMusicData] = useState(
@@ -80,6 +83,12 @@ function App() {
   return (
     <>
       <main className="main--container">
+        <LoadingBar
+          color="#4ffb9f"
+          height={3}
+          progress={progress}
+          transitionTime={200}
+        />
         {/* <a href={AUTH_URL}>Token</a> */}
         {windowWidth > 600 ? <NavbarPC /> : <NavbarMobile />}
         <Routes>
@@ -112,6 +121,7 @@ function App() {
                 handleAuthorizeSpotify={handleAuthorizeSpotify}
                 auth={AUTH_URL}
                 token={accessToken}
+                setProgress={setProgress}
                 setToken={setAccessToken}
               />
             }

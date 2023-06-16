@@ -1,27 +1,26 @@
 import React, { useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import getRecentData from "../../../SpotifyAPI";
-import { getNowPlaying } from "../../../SpotifyAPI";
 
-const SearchBar = ({ setLoading, setSearchData, token, setToken }) => {
+const SearchBar = ({
+  setLoading,
+  setSearchData,
+  token,
+  setToken,
+  setProgress,
+}) => {
   const [searchInput, SetSearchInput] = useState();
   const searchRef = useRef();
-  // async function getToken() {
-  //   let data = await getNowPlaying();
-  //   setToken(data);
-  // }
-  // useEffect(() => {
-  //   getToken();
-  // }, []);
-  //   console.log(token);
   async function handleSubmit(e) {
+    setProgress(30);
     e.preventDefault();
     if (token !== undefined) {
       setLoading(true);
       const data = await getRecentData(searchInput, token);
       searchRef.current.blur();
-      // console.log(data.tracks.items);
+      setProgress(50);
       setTimeout(() => {
+        setProgress(100);
         setLoading(false);
         setSearchData(data.tracks.items);
       }, 800);
