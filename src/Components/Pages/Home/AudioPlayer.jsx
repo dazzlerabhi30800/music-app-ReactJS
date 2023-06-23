@@ -110,24 +110,30 @@ const AudioPlayer = ({
   }, [windowSize]);
 
   const handlePrevSong = () => {
+    audioRef.current.pause();
     audioRef.current.currentTime = 0;
     let prevIndex = index - 1 < 0 ? musicData.length - 1 : index - 1;
     setTrack(musicData[prevIndex]);
-    audioRef.current.src = musicData[prevIndex].audioSrc;
-    audioRef.current.play();
-    setIsPlaying(true);
-    setIndex(prevIndex);
-    handleMusicData(musicData[prevIndex].songId, true);
+    setTimeout(() => {
+      audioRef.current.src = musicData[prevIndex].audioSrc;
+      audioRef.current.play();
+      setIsPlaying(true);
+      setIndex(prevIndex);
+      handleMusicData(musicData[prevIndex].songId, true);
+    }, 1000);
   };
   const handleNextSong = () => {
+    audioRef.current.pause();
     audioRef.current.currentTime = 0;
     const nextIndex = index + 1 > musicData.length - 1 ? 0 : index + 1;
     setTrack(musicData[nextIndex]);
-    audioRef.current.src = musicData[nextIndex].audioSrc;
-    audioRef.current.play();
-    setIsPlaying(true);
-    handleMusicData(musicData[nextIndex].songId, true);
-    setIndex(nextIndex);
+    setTimeout(() => {
+      audioRef.current.src = musicData[nextIndex].audioSrc;
+      audioRef.current.play();
+      setIsPlaying(true);
+      handleMusicData(musicData[nextIndex].songId, true);
+      setIndex(nextIndex);
+    }, 1000);
     // console.log(index);
   };
 
