@@ -11,7 +11,6 @@
   background: linear-gradient(90deg, rgb(12, 18, 24) 0%, rgba(0, 0, 0, 1) 100%);
   height: inherit;
   overflow: scroll;
-  scroll-behavior: smooth;
   padding: 1rem;
   padding-bottom: 10rem;
 }
@@ -27,7 +26,7 @@
   gap: 1rem;
 }
 
-.recent--container > a {
+.recent--container>a {
   text-decoration: none;
 }
 
@@ -43,13 +42,13 @@
   transition: 0.3s linear;
 }
 
-.recent--comp > img {
+.recent--comp>img {
   width: 75px;
   border-radius: 3px 0 0 3px;
   height: 75px;
 }
 
-.recent--comp > p {
+.recent--comp>p {
   font-size: 0.9rem;
 }
 
@@ -78,7 +77,7 @@ div h3 {
   background: rgba(113, 113, 113, 0.3);
 }
 
-.music--comp > img {
+.music--comp>img {
   grid-area: one;
   height: 300px;
   object-fit: fill;
@@ -86,12 +85,12 @@ div h3 {
   margin: 0 auto;
 }
 
-.music--comp > p {
+.music--comp>p {
   grid-area: two;
   font-weight: 500;
 }
 
-.music--comp > span {
+.music--comp>span {
   grid-area: three;
   place-self: start end;
   font-size: 1.8rem;
@@ -99,7 +98,7 @@ div h3 {
   transition: 0.3s linear;
 }
 
-.music--comp > .play--btn {
+.music--comp>.play--btn {
   grid-area: five;
   place-self: start end;
   border: none;
@@ -113,7 +112,7 @@ div h3 {
   transition: 0.3s linear;
 }
 
-.music--comp > a {
+.music--comp>a {
   grid-area: four;
   color: #ccc;
   text-decoration: underline;
@@ -252,15 +251,15 @@ div h3 {
     background: linear-gradient(to left, #f85656, #4e4efa);
   }
 
-  .music--comp > span {
+  .music--comp>span {
     cursor: pointer;
   }
 
-  .music--comp > a:hover {
+  .music--comp>a:hover {
     color: #fff;
   }
 
-  .music--comp > .play--btn:hover {
+  .music--comp>.play--btn:hover {
     box-shadow: 0px 0px 40px 1px #6cfa6c68;
     background: #2ef32e;
     transition: 0.3s linear;
@@ -282,7 +281,7 @@ div h3 {
     padding: 1rem 1rem 7rem;
   }
 
-  .music--comp > img {
+  .music--comp>img {
     height: 320px;
   }
 }
