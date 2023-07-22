@@ -24,6 +24,7 @@ function App() {
   const [artists, setArtists] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const redirect = window.location.origin + "/";
+  console.log(redirect);
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
 
   // Loading Bar Progress
@@ -91,7 +92,6 @@ function App() {
         },
       });
       const result = await response.json();
-      console.log(result);
       if (!result.error) {
         setCurrentUser(result);
       }

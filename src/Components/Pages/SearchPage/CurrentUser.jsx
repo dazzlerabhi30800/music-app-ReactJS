@@ -1,15 +1,12 @@
 import React from "react";
 
 const CurrentUser = ({ token, setToken, currentUser, setCurrentUser }) => {
-  console.log(currentUser);
-
   const handleLogout = () => {
     setToken(null);
     setCurrentUser(null);
     window.localStorage.removeItem("token");
   };
 
-  console.log(token);
   return (
     <div className="current--user">
       {token && (
