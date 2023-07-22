@@ -16,14 +16,14 @@ function App() {
   const REDIRECT_URI = "http://localhost:5173/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
-  const access_token = import.meta.env.VITE_APP_ACCESS_TOKEN_2;
   const windowWidth = useResize();
 
   const [accessToken, setAccessToken] = useState(null);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [artists, setArtists] = useState([]);
-  const redirect = window.location.href.replaceAll("/search", "/");
+  const [currentUser, setCurrentUser] = useState(null);
+  const redirect = window.location.origin + "/";
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
 
   // Loading Bar Progress
@@ -55,6 +55,7 @@ function App() {
       window.localStorage.setItem("token", token);
     }
     setAccessToken(token);
+    currentUserProfile(localStorage.getItem("token"));
   }, []);
 
   const handleAuthorizeSpotify = () => {
@@ -79,10 +80,32 @@ function App() {
     let tokenNew = window.localStorage.getItem("token");
     setAccessToken(tokenNew);
   });
+  // console.log(currentUser);
+
+  const currentUserProfile = async (token) => {
+    try {
+      const response = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const result = await response.json();
+      console.log(result);
+      if (!result.error) {
+        setCurrentUser(result);
+      }
+    } catch (error) {
+      alert(error);
+    }
+  };
 
   return (
     <>
       <main className="main--container">
+        {/* <button onClick={() => currentUserProfile(accessToken)}> */}
+        {/*   Click Me */}
+        {/* </button> */}
         <LoadingBar
           color="#4ffb9f"
           height={3}
@@ -119,6 +142,8 @@ function App() {
             element={
               <SearchPage
                 handleAuthorizeSpotify={handleAuthorizeSpotify}
+                setCurrentUser={setCurrentUser}
+                currentUser={currentUser}
                 auth={AUTH_URL}
                 token={accessToken}
                 setProgress={setProgress}

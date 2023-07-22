@@ -1,13 +1,6 @@
 import React from "react";
 
-const SearchList = ({
-  loading,
-  searchData,
-  token,
-  setToken,
-  auth,
-  handleAuthorizeSpotify,
-}) => {
+const SearchList = ({ loading, searchData, token, setToken, auth }) => {
   const handleLogout = () => {
     setToken(null);
     console.log("hello");
@@ -51,13 +44,12 @@ const SearchList = ({
           <h3 style={{ margin: "0 auto" }}>
             {loading ? "Loading..." : "Search Your Music"}
           </h3>
-          <a className="auth--btn sign--in" href={auth}>
-            {token !== null ? "You have Signed In" : "Sign In to Search Songs"}
-          </a>
-          {token && (
-            <button className="auth--btn logout--btn" onClick={handleLogout}>
-              Logout
-            </button>
+          {!token && (
+            <a className="auth--btn sign--in" href={auth}>
+              {token !== null
+                ? "You have Signed In"
+                : "Sign In to Search Songs"}
+            </a>
           )}
         </div>
       )}

@@ -1,182 +1,205 @@
 .search--wrapper {
-    display: flex;
-    /* min-width: 300px; */
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
+  display: flex;
+  /* min-width: 300px; */
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
-
 form {
-    display: flex;
-    justify-content: space-between;
-    width: inherit;
-    padding: 8px;
-    align-items: center;
-    flex-basis: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  width: inherit;
+  padding: 8px;
+  align-items: center;
+  flex-basis: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
 }
 
 form input {
-    border: none;
-    outline: none;
-    padding: 8px;
-    font-family: 'Poppins', sans-serif;
-    background: none;
-    border-bottom: 1px solid #fff;
-    border-radius: 5px;
-    color: #fff;
-    font-weight: 500;
-    flex-basis: 80%;
-    border-radius: 0px;
-    transform: scale(0.9);
-    transition: 0.15s linear;
+  border: none;
+  outline: none;
+  padding: 8px;
+  font-family: "Poppins", sans-serif;
+  background: none;
+  border-bottom: 1px solid #fff;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 500;
+  flex-basis: 80%;
+  border-radius: 0px;
+  transform: scale(0.9);
+  transition: 0.15s linear;
 }
 
 input:focus,
 input:valid {
-    transform: scale(1);
+  transform: scale(1);
 }
 
-
 input::placeholder {
-    color: #d0cdcd;
+  color: #d0cdcd;
 }
 
 .search--btn {
-    background: #86ed86;
-    padding: 8px;
-    border-radius: 5px;
-    flex-basis: 5%;
-    font-size: 1.2rem;
-    transition: 0.4s ease;
+  background: #86ed86;
+  padding: 8px;
+  border-radius: 5px;
+  flex-basis: 5%;
+  font-size: 1.2rem;
+  transition: 0.4s ease;
 }
-
 
 /* Result Comp */
 .result--wrapper {
-    display: flex;
-    width: 100%;
-    padding: 1rem 0;
+  display: flex;
+  width: 100%;
+  padding: 1rem 0;
 }
 
 .result--container {
-    display: grid;
-    grid-template-columns: repeat(1, 100%);
-    width: 100%;
-    gap: 2rem;
-    padding: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  width: clamp(400px, 100%, 800px);
+  gap: 2rem;
+  margin: 1rem auto;
+  padding: 1rem 0;
 }
 
 .result--comp {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    /* background: rgb(44, 44, 45); */
-    background: linear-gradient(270deg, rgb(31, 31, 85) 10%, rgb(34, 32, 98) 30%);
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  /* background: rgb(44, 44, 45); */
+  background: linear-gradient(270deg, rgb(31, 31, 85) 10%, rgb(34, 32, 98) 30%);
+  justify-content: space-between;
 }
 
 .song--info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.song--info>img {
-    width: 50px;
-    height: 50px;
+.song--info > img {
+  width: 50px;
+  height: 50px;
 }
 
 .song--info--text {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.song--info--text>h1 {
-    font-size: clamp(0.8rem, 1vw, 1rem) !important;
-    /* width: 20ch; */
-    text-transform: uppercase;
-    font-weight: 500 !important;
+.song--info--text > h1 {
+  font-size: clamp(0.8rem, 1vw, 1rem) !important;
+  /* width: 20ch; */
+  text-transform: uppercase;
+  font-weight: 500 !important;
 }
 
-.song--info--text>a {
-    font-size: .75rem;
-    font-size: clamp(0.75rem, 1vw, 1rem);
-    font-weight: 500;
-    color: #b3afaf;
-    text-decoration: underline;
+.song--info--text > a {
+  font-size: 0.75rem;
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-weight: 500;
+  color: #b3afaf;
+  text-decoration: underline;
 }
-
 
 .listen--btn {
-    padding: 10px 8px;
-    border-radius: 3px;
-    background: #70f670;
-    color: #000;
-    font-size: clamp(0.75rem, 1vw, 1rem);
-    white-space: nowrap;
-    box-shadow: 1px 1px 30px 2px #49fd4900;
-    font-weight: 500;
-    transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 10px 8px;
+  border-radius: 3px;
+  background: #70f670;
+  color: #000;
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  white-space: nowrap;
+  box-shadow: 1px 1px 30px 2px #49fd4900;
+  font-weight: 500;
+  transition: 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .auth--container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
 }
 
 .auth--btn {
-    color: #000;
-    padding: 10px 15px;
-    font-weight: 600;
-    width: fit-content;
-    margin: 0 auto;
-    font-size: 1.1rem;
-    display: flex;
-    border-radius: 3px;
-    transition: 0.3s linear;
+  color: #000;
+  padding: 10px 15px;
+  font-weight: 600;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  display: flex;
+  border-radius: 3px;
+  transition: 0.3s linear;
 }
 
 .sign--in {
-    background: #5af674;
+  background: #5af674;
 }
 
 .logout--btn {
-    background: #fb2ecb;
+  background: #fb2ecb;
+  padding: 8px 12px;
+  font-size: 1rem;
+  margin: 0;
 }
 
-@media (hover:hover) {
-    .search--btn:hover {
-        background: #78f9f2;
-    }
+/* Current User styling */
+.current--user {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: clamp(350px, 100%, 700px);
+}
+.current--user--info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
 
-    .listen--btn:hover {
-        box-shadow: 1px 1px 30px 2px #49fd49;
-        cursor: pointer;
+.current--user--info img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
 
-    }
+@media (hover: hover) {
+  .search--btn:hover {
+    background: #78f9f2;
+  }
 
-    .song--info--text>a:hover {
-        color: #bcfa8f;
-    }
+  .listen--btn:hover {
+    box-shadow: 1px 1px 30px 2px #49fd49;
+    cursor: pointer;
+  }
 
-    .song--info--text>h1 {
-        font-size: .85rem;
-        width: 100%;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
+  .song--info--text > a:hover {
+    color: #bcfa8f;
+  }
 
-    .sign--in:hover {
-        background: #2ef34f;
-    }
+  .song--info--text > h1 {
+    font-size: 0.85rem;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
 
-    .logout--btn:hover {
-        background: #fd568b;
-    }
+  .sign--in:hover {
+    background: #2ef34f;
+  }
+
+  .logout--btn:hover {
+    background: #fd568b;
+  }
 }

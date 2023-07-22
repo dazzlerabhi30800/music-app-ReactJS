@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import SearchBar from "./SearchBar";
 import SearchList from "./SearchList";
+import CurrentUser from "./CurrentUser";
 
 const SearchPage = ({
   auth,
   token,
   setToken,
   handleAuthorizeSpotify,
+  setCurrentUser,
   setProgress,
+  currentUser,
 }) => {
   const [searchData, setSearchData] = useState();
   const [loading, setLoading] = useState();
@@ -22,10 +25,17 @@ const SearchPage = ({
           setToken={setToken}
           setProgress={setProgress}
         />
+        {token && (
+          <CurrentUser
+            currentUser={currentUser}
+            setToken={setToken}
+            setCurrentUser={setCurrentUser}
+            token={token}
+          />
+        )}
         <SearchList
           token={token}
           setToken={setToken}
-          handleAuthorizeSpotify={handleAuthorizeSpotify}
           loading={loading}
           auth={auth}
           searchData={searchData}
