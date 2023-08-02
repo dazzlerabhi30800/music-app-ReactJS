@@ -13,7 +13,6 @@ import LoadingBar from "react-top-loading-bar";
 
 function App() {
   const CLIENT_ID = import.meta.env.VITE_APP_SPOTIFY_CLIENT_ID;
-  const REDIRECT_URI = "http://localhost:5173/";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const windowWidth = useResize();
@@ -24,7 +23,6 @@ function App() {
   const [artists, setArtists] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const redirect = window.location.origin + "/";
-  console.log(redirect);
   const AUTH_URL = `${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&response_type=${RESPONSE_TYPE}&redirect_uri=${redirect}&scope=user-read-currently-playing&&grant_type=client_credentials&Authorization=Basic`;
 
   // Loading Bar Progress
@@ -56,7 +54,12 @@ function App() {
       window.localStorage.setItem("token", token);
     }
     setAccessToken(token);
-    currentUserProfile(localStorage.getItem("token"));
+    let storageToken = localStorage.getItem("token");
+    if (token) {
+      currentUserProfile(storageToken);
+    } else {
+      currentUserProfile(token);
+    }
   }, []);
 
   const handleAuthorizeSpotify = () => {
@@ -103,17 +106,13 @@ function App() {
   return (
     <>
       <main className="main--container">
-        {/* <button onClick={() => currentUserProfile(accessToken)}> */}
-        {/*   Click Me */}
-        {/* </button> */}
         <LoadingBar
           color="#4ffb9f"
           height={3}
           progress={progress}
           transitionTime={200}
         />
-        {/* <a href={AUTH_URL}>Token</a> */}
-        {windowWidth > 600 ? <NavbarPC /> : <NavbarMobile />}
+        {windowWidth >= 700 ? <NavbarPC /> : <NavbarMobile />}
         <Routes>
           <Route
             exact

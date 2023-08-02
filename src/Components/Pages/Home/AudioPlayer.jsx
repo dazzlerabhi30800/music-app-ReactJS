@@ -152,6 +152,10 @@ const AudioPlayer = ({
   };
   return (
     <div
+      style={{
+        "--background-blurImage": `url(${track.img})`,
+        "--background-color": "red",
+      }}
       className={`audio--player ${
         isExpand && windowSize < 700 ? "expand" : ""
       }`}

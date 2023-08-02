@@ -20,9 +20,36 @@
     bottom: initial;
     height: 100vh;
     justify-content: center;
-    background: rgb(8, 1, 23);
-    gap: 1.5rem;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    gap: 3rem;
     transition: 0.3s linear;
+    z-index: 44;
+}
+
+.audio--player.expand::after {
+    position: absolute;
+    z-index: -2;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-blurImage);
+    background-position: center;
+    background-size: cover;
+}
+
+.audio--player.expand::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(1, 0, 4, 0.476);
+    backdrop-filter: blur(15px);
 }
 
 .expand .audio--info {
@@ -43,7 +70,7 @@
     height: 300px;
     width: 100%;
     border-radius: 5px;
-    filter: drop-shadow(0px 0px 20px rgba(54, 246, 111, 0.307));
+    filter: drop-shadow(0px 0px 30px rgba(244, 224, 80, 0.56));
 }
 
 .audio--info {
@@ -223,12 +250,12 @@ button.play--btn {
     border: none;
     outline: none;
     font-size: 1.3rem;
-    background: rgba(121, 121, 121, 0.989);
+    background: rgba(217, 217, 217, 0.989);
     padding: 8px;
     border-radius: 5px;
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 8px;
+    left: 8px;
 }
 
 .alternate {
